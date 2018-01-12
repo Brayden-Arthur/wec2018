@@ -1,0 +1,140 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  overflow: hidden;
+  font-size: 14px;
+  font-family: sans-serif;
+}
+body > * {
+  height: 100vh;
+}
+h1 {
+  padding: 20px;
+}
+nav {
+  flex: 0 0 300px;
+  overflow-y: auto;
+  border-right: 1px solid grey;
+}
+header {
+  background-color: #043769;
+  background-image: url('../images/edge.png');
+  background-position: 120% bottom;
+  background-repeat: no-repeat;
+  background-size: 170px;
+}
+header > img {
+  height: 48px;
+  margin: 15px 20px;
+}
+header > div {
+  height: 42px;
+  line-height: 40px;
+  color: #fff;
+  background: #002754b3;
+  padding: 0 20px;
+}
+h2, h3, h4 {
+  font-weight: normal;
+}
+#searchInput {
+  width: 100%;
+  border: none;
+  background: #e7e7e7;
+  color: #000;
+}
+#search {
+  position: relative;
+  margin: 10px 0;
+}
+#search:before, h2:before { /* icons */
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  width: 14px;
+  height: 14px;
+  content: '';
+  background-repeat: no-repeat;
+}
+#search:before {
+  background-image: url('../images/search.svg');
+  z-index: 1;
+  opacity: 0.5;
+}
+section {
+  border-bottom: 1px solid;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+h2, #searchInput {
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0 20px 0 40px;
+  height: 40px;
+  line-height: 40px;
+  position: relative;
+}
+h2:hover {
+  background: #0002;
+}
+h2:before {
+  background-image: url('../images/arrow.svg');
+  background-size: 100% auto;
+  width: 13px;
+  height: 13px;
+}
+/* article immediately following h2 */
+h2 + article {
+  display: none;
+}
+#about:before {
+  background-image: url('../images/info.svg');
+}
+#emergency:before {
+  background-image: url('../images/warning.svg');
+}
+#emergency {
+  background: #ff8f8f;
+}
+.zoom:before {
+  width: 18px;
+  height: 18px;
+  top: 10px;
+  left: 12px;
+}
+article div {
+  padding: 10px;
+  padding-left: 40px;
+}
+article div:nth-child(2n) {
+  background: #f2f2f2;
+}
+article div h3 {
+  font-size: 13px;
+  margin-bottom: 2px;
+}
+article div h4 {
+  font-size: 11px;
+  color: #8c8c8c;
+}
+.open:before, .flip {
+  transform: scaleY(-1);
+}
+.open + article {
+  display: block
+}
+.elevator img {
+  margin-top: 8px;
+  width: 14px;
+}
+.hidden {
+  display: none;
+}
+#map {
+  background: #fff;
+  flex: 1;
+}
