@@ -1,45 +1,34 @@
-<!DOCTYPE html>
-<html lang='en'>
-<head>
-  <meta charset='utf-8'/>
-  <title>Innoti.me</title>
-  <meta name='viewport' content='width=device-width, initial-scale=1'>
-  <link rel='stylesheet' href='../style.css'/>
-  <style>
-    #time {
-      font-size: 500px;
-    }
-    #timer {
-      font-size: 500%;
-    }
-    div {
-      background: rgb(3, 148, 180);
-      padding: 10px 15px;
-      cursor: pointer;
-    }
-  </style>
-</head>
-<body>
-  <div id='clock'></div>
-  <pre>TODO: hour12: false for 24hr</pre>
-</body>
-<script>
+// for the /time route #clock and #timer must exists
+
 // clock
-const clock = document.getElementById('clock')
+const clockWrap = document.getElementById('clock')
+
+const clock = document.createElement('h1')
+const clockOptions = { hour12: true }
+
+const today = document.createElement('p')
+const todayOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+
 function printClock() {
   const date = new Date()
-  clock.innerText = date.toLocaleTimeString('en-ca', {
-      hour12: true
-  })
+  clock.innerText = date.toLocaleTimeString('en-ca', clockOptions)
+  today.innerText = date.toLocaleString('en-ca', todayOptions)
 }
 printClock()
 setInterval(printClock, 1000)
+
+clockWrap.appendChild(clock)
+clockWrap.appendChild(today)
+
+// timer
+const timerWrap = document.getElementById('timer')
 
 const timer = document.createElement('div')
 timer.id = 'timer'
 
 const pauseButton = document.createElement('div')
 pauseButton.innerText = 'Start'
+
 const resetButton = document.createElement('div')
 resetButton.innerText = 'Reset'
 
@@ -53,7 +42,7 @@ let paused = true
 // holds the timeout for the next tick
 let next
 // the audio file to play when the timer completes
-const audio = new Audio('TimerDoneBell.mp3')
+const audio = new Audio('../TimerDoneBell.mp3')
 
 const timerTime = localStorage.getItem('timerTime')
 if (timerTime) {
@@ -132,11 +121,7 @@ function tick() {
   next = setTimeout(tick, 1000)
 }
 
-// the iframe has loaded
-const body = document.body
 const elements = [timer, pauseButton, resetButton, input, notice]
 for (elem of elements) {
-  body.appendChild(elem)
+    timerWrap.appendChild(elem)
 }
-</script>
-</html>

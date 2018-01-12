@@ -5,8 +5,12 @@
   <title>Innoti.me</title>
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' href='style.css'/>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.8.0/fullcalendar.min.css' />
   <script src='init.js' defer></script>
   <script src='js/search.js' defer></script>
+  <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.8.0/fullcalendar.min.js'></script>
 </head>
 <body>
   <nav>
@@ -21,6 +25,46 @@
       <h2>Calendar</h2>
     </section>
   </nav>
-  <iframe id='main' src='pages/time.html'></iframe>
+  <template id='time'>
+    <style>
+      #time, #timer {
+        font-size: 100px;
+      }
+      #timer div {
+        background: rgb(3, 148, 180);
+        padding: 10px 15px;
+        cursor: pointer;
+      }
+    </style>
+    <div id='clock'></div>
+    <div id='timer'></div>
+    <div id='alarm'></div>
+    <script src='js/time.js'></script>
+  </template>
+  <template id='notes'>
+    <div id='search'>
+      <!-- needs wrapper since inputs don't have ::before/::after -->
+      <input placeholder='Search' id='searchInput'>
+    </div>
+    <div class="grid-container">
+      <div id="note_area" style="display:inline-table;">
+        <div class="note">
+          <textarea name="text1" id="text1"></textarea>
+        </div>
+      </div>
+      <div>
+        <button class="note_button" name="add_note" id="add_note" onclick="note_click()">add note</button>
+        <button class="note_button" name="save_notes" id="save_notes" onclick="local_store()">save note</button>
+      </div>
+    </div>
+  </template>
+  <template id='calendar'>
+    <div id='calendarWrap'></div>
+    <script>
+      $('#calendarWrap').fullCalendar({
+        // methods here. see API
+      })
+    </script>
+  </template>
 </body>
 </html>

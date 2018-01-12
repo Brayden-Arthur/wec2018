@@ -9,7 +9,10 @@ body {
   font-size: 14px;
   font-family: sans-serif;
 }
-nav, iframe {
+template {
+  display: none;
+}
+nav, template {
   height: 100vh;
 }
 h1 {
