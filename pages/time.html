@@ -1,0 +1,94 @@
+<style>
+  #timer {
+    font-size: 200%
+  }
+</style>
+<script>
+const timer = document.createElement('div')
+timer.id = 'timer'
+
+const { pauseButton, resetButton } = ['Start', 'Reset'].map(text => {
+  const elem = document.createElement('div')
+  elem.innerText = text
+  return elem
+})
+
+const input = document.createElement('input')
+input.placeholder = '20:00'
+
+const notice = document.createElement('span')
+
+// initially load paused
+let paused = true
+// holds the timeout for the next tick
+let next
+
+const timerTime = localStorage.getItem('timerTime')
+if (timerTime) {
+  timer.innerHTML = timerTime
+} else {
+  timer.innerHTML = '00:00'
+}
+const inputTime = localStorage.getItem('inputTime')
+if (inputTime) {
+  input.value = inputTime
+}
+// else use placeholder
+
+function pause(bool) {
+  if (paused === bool) {
+    return
+  }
+  const text = bool ? 'Start' : 'Stop'
+  document.getElementById('#pause').innerText = text
+}
+
+input.addEventListener('oninput', event => {
+  pause(true)
+  if (/\d{1,2}:\d{2}/.match(input.value)) {
+    notice.innerText= ''
+    reset()
+    localStorage.setItem('savedTime', input.value)
+  } else {
+    notice.innerText = 'Please use (M)M:SS format'
+  }
+})
+
+pauseButton.addEventListener('click', event => {
+  pause(!paused)
+})
+
+function reset() {
+  timer.innerHTML = savedTime
+  clearTimeout(next)
+  tick()
+}
+resetButton.addEventListener('click', reset)
+
+function tick() {
+  if (paused) {
+    return
+  }
+  const now = timer.innerHTML
+  let {minutes, seconds} = presentTime.split(':').map(parseInt)
+  if (seconds < 0) {
+    seconds = '59'
+  }
+  if (seconds.toString.length == 1) {
+    seconds = '0' + seconds
+  }
+  if (seconds == 59) {
+    minutes--
+  }
+  if (minutes < 0) {
+    alert('TODO add noise')
+  }
+  const newTime = `${minutes}:${seconds}`
+  timer.innerHTML = newTime
+  localStorage.setItem('time', newTime)
+  next = setTimeout(tick, 1000)
+}
+
+const iframe = document.getElementById('#main')
+[timer, pauseButton, resetButton, input, notice].forEach(x => iframe.appendChild(x))
+</script>
