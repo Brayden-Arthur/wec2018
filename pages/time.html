@@ -24,6 +24,8 @@ const notice = document.createElement('span')
 let paused = true
 // holds the timeout for the next tick
 let next
+// the audio file to play when the timer completes
+const audio = new Audio('TimerDoneBell.mp3')
 
 const timerTime = localStorage.getItem('timerTime')
 if (timerTime) {
@@ -67,6 +69,7 @@ function reset() {
   // clearTimeout(next)
   // tick()
   timer.innerHTML = localStorage.getItem('savedTime')
+  notice.innerText = ''
 }
 resetButton.addEventListener('click', reset)
 
@@ -83,8 +86,10 @@ function tick() {
     minutes--
   }
   if (minutes < 0) {
-    alert('TODO add noise')
     pause(true)
+    audio.play()
+    const dateText = (new Date()).toLocaleString()
+    notice.innerText = `Timer completed at ${dateText}`
     return
   }
   if (seconds.toString().length == 1) {
