@@ -22,7 +22,7 @@ nav {
 }
 header {
   background-color: #043769;
-  background-image: url('../images/edge.png');
+  background-image: url('images/edge.png');
   background-position: 120% bottom;
   background-repeat: no-repeat;
   background-size: 170px;
@@ -61,7 +61,7 @@ h2, h3, h4 {
   background-repeat: no-repeat;
 }
 #search:before {
-  background-image: url('../images/search.svg');
+  background-image: url('images/search.svg');
   z-index: 1;
   opacity: 0.5;
 }
@@ -82,7 +82,7 @@ h2:hover {
   background: #0002;
 }
 h2:before {
-  background-image: url('../images/arrow.svg');
+  background-image: url('images/arrow.svg');
   background-size: 100% auto;
   width: 13px;
   height: 13px;
@@ -92,7 +92,7 @@ h2 + article {
   display: none;
 }
 #about:before {
-  background-image: url('../images/info.svg');
+  background-image: url('images/info.svg');
 }
 .zoom:before {
   width: 18px;
