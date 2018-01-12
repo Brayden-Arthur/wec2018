@@ -20,6 +20,21 @@ nav {
   overflow-y: auto;
   border-right: 1px solid grey;
 }
+.note {
+    display: inline-block;
+    padding: 4px;
+}
+.note > textarea {
+  font-size: 12px;
+  width: 300px;
+  border: 3px solid #cccccc;
+  height: 80px
+  po
+}
+.note_button {
+  display: inline-block;
+  padding: 5px;
+}
 header {
   background-color: #043769;
   background-image: url('images/edge.png');
