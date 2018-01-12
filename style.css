@@ -94,12 +94,6 @@ h2 + article {
 #about:before {
   background-image: url('../images/info.svg');
 }
-#emergency:before {
-  background-image: url('../images/warning.svg');
-}
-#emergency {
-  background: #ff8f8f;
-}
 .zoom:before {
   width: 18px;
   height: 18px;
@@ -127,14 +121,11 @@ article div h4 {
 .open + article {
   display: block
 }
-.elevator img {
-  margin-top: 8px;
-  width: 14px;
-}
 .hidden {
   display: none;
 }
-#map {
+#main {
   background: #fff;
   flex: 1;
+  border: none;
 }
