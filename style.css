@@ -9,7 +9,7 @@ body {
   font-size: 14px;
   font-family: sans-serif;
 }
-body > * {
+nav, iframe {
   height: 100vh;
 }
 h1 {
@@ -28,8 +28,7 @@ nav {
   font-size: 12px;
   width: 300px;
   border: 3px solid #cccccc;
-  height: 80px
-  po
+  height: 80px;
 }
 .note_button {
   display: inline-block;
@@ -43,8 +42,8 @@ header {
   background-size: 170px;
 }
 header > img {
-  height: 48px;
-  margin: 15px 20px;
+  height: 64px;
+  margin: 7px 10px;
 }
 header > div {
   height: 42px;
@@ -98,46 +97,13 @@ h2:hover {
 }
 h2:before {
   background-image: url('images/arrow.svg');
+  transform: rotate(-90deg);
   background-size: 100% auto;
   width: 13px;
   height: 13px;
 }
-/* article immediately following h2 */
-h2 + article {
-  display: none;
-}
 #about:before {
   background-image: url('images/info.svg');
-}
-.zoom:before {
-  width: 18px;
-  height: 18px;
-  top: 10px;
-  left: 12px;
-}
-article div {
-  padding: 10px;
-  padding-left: 40px;
-}
-article div:nth-child(2n) {
-  background: #f2f2f2;
-}
-article div h3 {
-  font-size: 13px;
-  margin-bottom: 2px;
-}
-article div h4 {
-  font-size: 11px;
-  color: #8c8c8c;
-}
-.open:before, .flip {
-  transform: scaleY(-1);
-}
-.open + article {
-  display: block
-}
-.hidden {
-  display: none;
 }
 #main {
   background: #fff;

@@ -1,17 +1,30 @@
-<style>
-  #timer {
-    font-size: 200%
-  }
-</style>
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'/>
+  <title>Innoti.me</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' href='../style.css'/>
+  <style>
+    #timer {
+      font-size: 500%;
+    }
+    div {
+      background: rgb(3, 148, 180);
+      padding: 10px 15px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body></body>
 <script>
 const timer = document.createElement('div')
 timer.id = 'timer'
 
-const { pauseButton, resetButton } = ['Start', 'Reset'].map(text => {
-  const elem = document.createElement('div')
-  elem.innerText = text
-  return elem
-})
+const pauseButton = document.createElement('div')
+pauseButton.innerText = 'Start'
+const resetButton = document.createElement('div')
+resetButton.innerText = 'Reset'
 
 const input = document.createElement('input')
 input.placeholder = '20:00'
@@ -22,6 +35,8 @@ const notice = document.createElement('span')
 let paused = true
 // holds the timeout for the next tick
 let next
+// the audio file to play when the timer completes
+const audio = new Audio('TimerDoneBell.mp3')
 
 const timerTime = localStorage.getItem('timerTime')
 if (timerTime) {
@@ -36,19 +51,22 @@ if (inputTime) {
 // else use placeholder
 
 function pause(bool) {
+  console.log('pause', bool)
   if (paused === bool) {
     return
   }
+  paused = bool
   const text = bool ? 'Start' : 'Stop'
-  document.getElementById('#pause').innerText = text
+  pauseButton.innerText = text
+  tick()
 }
 
-input.addEventListener('oninput', event => {
+input.addEventListener('keyup', event => {
   pause(true)
-  if (/\d{1,2}:\d{2}/.match(input.value)) {
+  if (/^\d{1,2}:\d{2}$/.test(input.value)) {
     notice.innerText= ''
-    reset()
     localStorage.setItem('savedTime', input.value)
+    reset()
   } else {
     notice.innerText = 'Please use (M)M:SS format'
   }
@@ -59,9 +77,10 @@ pauseButton.addEventListener('click', event => {
 })
 
 function reset() {
-  timer.innerHTML = savedTime
-  clearTimeout(next)
-  tick()
+  // clearTimeout(next)
+  // tick()
+  timer.innerHTML = localStorage.getItem('savedTime')
+  notice.innerText = ''
 }
 resetButton.addEventListener('click', reset)
 
@@ -70,18 +89,25 @@ function tick() {
     return
   }
   const now = timer.innerHTML
-  let {minutes, seconds} = presentTime.split(':').map(parseInt)
-  if (seconds < 0) {
+  let [minutes, seconds] = now.split(':').map(x => {
+    return parseInt(x) || 0
+  })
+  if (--seconds < 0) {
     seconds = '59'
-  }
-  if (seconds.toString.length == 1) {
-    seconds = '0' + seconds
-  }
-  if (seconds == 59) {
     minutes--
   }
   if (minutes < 0) {
-    alert('TODO add noise')
+    pause(true)
+    audio.play()
+    const dateText = (new Date()).toLocaleString()
+    notice.innerText = `Timer completed at ${dateText}`
+    return
+  }
+  if (seconds.toString().length == 1) {
+    seconds = '0' + seconds
+  }
+  if (minutes.toString().length == 1) {
+    minutes = '0' + minutes
   }
   const newTime = `${minutes}:${seconds}`
   timer.innerHTML = newTime
@@ -89,6 +115,11 @@ function tick() {
   next = setTimeout(tick, 1000)
 }
 
-const iframe = document.getElementById('#main')
-[timer, pauseButton, resetButton, input, notice].forEach(x => iframe.appendChild(x))
+// the iframe has loaded
+const body = document.body
+const elements = [timer, pauseButton, resetButton, input, notice]
+for (elem of elements) {
+  body.appendChild(elem)
+}
 </script>
+</html>

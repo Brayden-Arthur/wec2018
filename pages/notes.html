@@ -5,10 +5,8 @@
   <title>Innoti.me</title>
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' href='../style.css'/>
-  <script src='js/main.js'></script>
-  <script src='js/search.js' defer></script>
 </head>
-<body onload="setup();">
+<body>
   <div class="grid-container">
     <div id="note_area" style="display:inline-table;">
       <div class="note">
@@ -21,8 +19,11 @@
     </div>
   </div>
 </body>
-<script type="text/javascript">
-function note_click(){
+<script>
+// this is called after DOM parsing
+setup()
+
+function note_click() {
   var num_notes = document.querySelectorAll('.note').length;
   var element = document.createElement("div");
   var note = document.createElement("textarea");
@@ -34,7 +35,7 @@ function note_click(){
   note_area.prepend(element);
 }
 
-function local_store(){
+function local_store() {
   var num_notes = document.querySelectorAll('.note').length;
   for(i = 1; i <= num_notes; i++){
     console.log(i)
@@ -44,7 +45,7 @@ function local_store(){
   }
 }
 
-function setup(){
+function setup() {
   var num_notes = localStorage.getItem("num_notes");
   console.log(num_notes)
   if(num_notes){
@@ -67,7 +68,6 @@ function setup(){
       }
     }
   }
-
 }
 </script>
 </html>
