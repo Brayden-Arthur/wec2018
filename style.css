@@ -30,9 +30,22 @@ nav {
   border: 3px solid #cccccc;
   height: 80px;
 }
-.note_button {
+.feature_button {
   display: inline-block;
-  padding: 5px;
+  -webkit-border-radius: 7;
+  -moz-border-radius: 7;
+  border-radius: 7px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 12px;
+  background: #005493;
+  padding: 5px 10px 5px 10px;
+  border: solid #236dc2 1px;
+  text-decoration: none;
+}
+.feature_button:hover {
+  background: #1e73a8;
+  text-decoration: none;
 }
 header {
   background-color: #043769;
