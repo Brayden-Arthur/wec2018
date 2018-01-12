@@ -7,6 +7,10 @@
   <link rel='stylesheet' href='../style.css'/>
 </head>
 <body>
+  <div id='search'>
+    <!-- needs wrapper since inputs don't have ::before/::after -->
+    <input placeholder='Search' id='searchInput'>
+  </div>
   <div class="grid-container">
     <div id="note_area" style="display:inline-table;">
       <div class="note">
@@ -14,8 +18,8 @@
       </div>
     </div>
     <div>
-      <button class="note_button" name="add_note" id="add_note" onclick="note_click()">add note</button>
-      <button class="note_button" name="save_notes" id="save_notes" onclick="local_store()">save note</button>
+      <button class="feature_button" name="add_note" id="add_note" onclick="note_click()">add note</button>
+      <button class="feature_button" name="save_notes" id="save_notes" onclick="local_store()">save note</button>
     </div>
   </div>
 </body>

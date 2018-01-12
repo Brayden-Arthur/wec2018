@@ -6,6 +6,9 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' href='../style.css'/>
   <style>
+    #time {
+      font-size: 500px;
+    }
     #timer {
       font-size: 500%;
     }
@@ -16,8 +19,22 @@
     }
   </style>
 </head>
-<body></body>
+<body>
+  <div id='clock'></div>
+  <pre>TODO: hour12: false for 24hr</pre>
+</body>
 <script>
+// clock
+const clock = document.getElementById('clock')
+function printClock() {
+  const date = new Date()
+  clock.innerText = date.toLocaleTimeString('en-ca', {
+      hour12: true
+  })
+}
+printClock()
+setInterval(printClock, 1000)
+
 const timer = document.createElement('div')
 timer.id = 'timer'
 

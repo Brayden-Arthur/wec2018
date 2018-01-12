@@ -10,8 +10,3 @@ Array.prototype.forEach.call(links, elem => {
       main.src = location
   })
 })
-
-const date = new Date()
-console.log(date.toLocaleString('en-ca', {
-    hour12: true
-}))
