@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'/>
+  <title>Innoti.me</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' href='../style.css'/>
+
+</head>
+<body>
+  <div class="grid-container">
+    <input id="todo_task" type="text" placeholder="Task Name"></input><button onclick="add_task();">Add Task</button>
+    <ul id="task_list">
+    </ul>
+  </div>
+</body>
+<script type="text/javascript">
+setup();
+var task_list = []
+function add_task(){
+  var element = document.createElement("li");
+  var input_text = document.getElementById("todo_task").value;
+  var task = document.createTextNode(input_text);
+  var close = document.createElement("span");
+  var close_text = document.createTextNode("\u2715");
+  close.setAttribute("class", "close");
+  close.setAttribute("name", "close");
+  close.setAttribute("onclick", "delete_task(this);");
+  close.appendChild(close_text);
+  element.setAttribute("class", "task");
+  element.appendChild(task);
+  element.appendChild(close);
+  if(input_text == ""){
+    alert("Please write a task name");
+  }
+  else{
+    document.getElementById("task_list").appendChild(element);
+    document.getElementById("todo_task").value = "";
+
+    task_list.push(input_text)
+    localStorage.setItem("task_list",task_list.toString());
+  }
+
+}
+
+function delete_task(close_button){
+  var parent = close_button.parentElement;
+  task_name = parent.innerText.replace("✕","");
+
+  task_index = task_list.indexOf(task_name);
+  if(task_index > -1){
+    task_list.splice(task_index,1)
+  }
+  parent.style.display = 'none';
+  localStorage.setItem("task_list",task_list.toString());
+}
+
+function check_task(){
+
+}
+
+function setup(){
+  console.log("k")
+  task_list = localStorage.getItem("task_list").split(',');
+  console.log(task_list)
+  for(i = 0; i < task_list.length; i++){
+    var element = document.createElement("li");
+    var input_text = task_list[i];
+    var task = document.createTextNode(input_text);
+    var close = document.createElement("span");
+    var close_text = document.createTextNode("\u2715");
+    close.setAttribute("class", "close");
+    close.setAttribute("name", "close");
+    close.setAttribute("onclick", "delete_task(this);");
+    close.appendChild(close_text);
+    element.setAttribute("class", "task");
+    element.appendChild(task);
+    element.appendChild(close);
+    document.getElementById("task_list").appendChild(element);
+  }
+
+}
+
+</script>
+</html>
