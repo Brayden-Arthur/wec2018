@@ -42,7 +42,7 @@ let paused = true
 // holds the timeout for the next tick
 let next
 // the audio file to play when the timer completes
-const audio = new Audio('../TimerDoneBell.mp3')
+const audio = new Audio('TimerDoneBell.mp3')
 
 const timerTime = localStorage.getItem('timerTime')
 if (timerTime) {
