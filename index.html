@@ -6,6 +6,7 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' href='style.css'/>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.8.0/fullcalendar.min.css' />
+  <link rel="shortcut icon" href="https://web.uvic.ca/~barthur/wec2018/images/logo.png"/>
   <script src='init.js' defer></script>
   <script src='js/search.js' defer></script>
   <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
@@ -53,10 +54,18 @@
         </div>
       </div>
       <div>
-        <button class="note_button" name="add_note" id="add_note" onclick="note_click()">add note</button>
-        <button class="note_button" name="save_notes" id="save_notes" onclick="local_store()">save note</button>
+        <button class="feature_button" name="add_note" id="add_note" onclick="note_click()">add note</button>
+        <button class="feature_button" name="save_notes" id="save_notes" onclick="local_store()">save note</button>
       </div>
     </div>
+    <script src='js/notes.js'></script>
+  </template>
+  <template id='todo'>
+    <div class="grid-container">
+      <input id="todo_task" type="text" placeholder="Task Name"></input><button onclick="add_task();">Add Task</button>
+      <ul id="task_list"></ul>
+    </div>
+    <script src='js/todo.js'></script>
   </template>
   <template id='calendar'>
     <div id='calendarWrap'></div>
