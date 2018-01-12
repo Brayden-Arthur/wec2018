@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'/>
+  <title>Innoti.me</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' href='../style.css'/>
+  <script src='js/main.js'></script>
+  <script src='js/search.js' defer></script>
+</head>
+<body onload="setup();">
+  <div class="grid-container">
+    <div id="note_area" style="display:inline-table;">
+      <div class="note">
+        <textarea name="text1" id="text1"></textarea>
+      </div>
+    </div>
+    <div>
+      <button class="note_button" name="add_note" id="add_note" onclick="note_click()">add note</button>
+      <button class="note_button" name="save_notes" id="save_notes" onclick="local_store()">save note</button>
+    </div>
+  </div>
+</body>
+<script type="text/javascript">
+function note_click(){
+  var num_notes = document.querySelectorAll('.note').length;
+  var element = document.createElement("div");
+  var note = document.createElement("textarea");
+  console.log(num_notes)
+  console.log(note)
+  note.setAttribute("id", "text" + (num_notes + 1));
+  element.appendChild(note);
+  element.className="note";
+
+  var note_area = document.getElementById("note_area");
+  note_area.prepend(element);
+}
+
+function local_store(){
+  var num_notes = document.querySelectorAll('.note').length;
+  for(i = 1; i <= num_notes; i++){
+    console.log(i)
+    var note = document.getElementById("text" + i).value;
+    localStorage.setItem("note" + i, note);
+    localStorage.setItem("num_notes",num_notes)
+  }
+}
+
+function setup(){
+  var num_notes = localStorage.getItem("num_notes");
+  console.log(num_notes)
+  if(num_notes){
+    if(num_notes == 1){
+      document.getElementById("text1").value = localStorage.getItem("note1")
+    }
+    else{
+      for(i = 2; i <= num_notes; i++){
+        var element = document.createElement("div");
+        var note = document.createElement("textarea");
+
+        note.setAttribute("id", "text" + i);
+        element.appendChild(note);
+        element.className="note";
+
+        document.getElementById("note_area").prepend(element);
+      }
+      for(i = 1; i <= num_notes; i++){
+        document.getElementById("text" + i).value = localStorage.getItem("note" + i)
+      }
+    }
+  }
+
+}
+</script>
+</html>
