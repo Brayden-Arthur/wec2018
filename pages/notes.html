@@ -31,8 +31,6 @@ function note_click() {
   var num_notes = document.querySelectorAll('.note').length;
   var element = document.createElement("div");
   var note = document.createElement("textarea");
-  console.log(num_notes)
-  console.log(note)
   note.setAttribute("id", "text" + (num_notes + 1));
   element.appendChild(note);
   element.className="note";
