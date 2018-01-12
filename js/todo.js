@@ -58,7 +58,7 @@ function check_task(li_element){
   close.setAttribute("onclick", "delete_task(this);");
   close.appendChild(close_text);
   li_element.appendChild(close);
-  task_list[task_index] = li_element.innerText;
+  task_list[task_index] = li_element.innerText.replace("✕","");
   localStorage.setItem("task_list",task_list.toString());
 }
 
