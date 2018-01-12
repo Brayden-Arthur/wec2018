@@ -4,9 +4,14 @@
 const iframe = document.getElementById('main')
 
 const links = document.querySelectorAll('nav section h2')
-links.forEach(elem => {
+Array.prototype.forEach.call(links, elem => {
   elem.addEventListener('click', ev => {
       const location = `pages/${elem.innerText.toLowerCase()}.html`
       main.src = location
   })
 })
+
+const date = new Date()
+console.log(date.toLocaleString('en-ca', {
+    hour12: true
+}))
