@@ -63,7 +63,6 @@ function check_task(li_element){
 }
 
 function setup(){
-  console.log("k")
   task_list = localStorage.getItem("task_list")
   if(task_list != null){
     task_list = localStorage.getItem("task_list").split(',');
