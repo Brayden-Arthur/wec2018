@@ -68,12 +68,15 @@
     <script src='js/todo.js'></script>
   </template>
   <template id='calendar'>
-    <div id='calendarWrap'></div>
-    <script>
-      $('#calendarWrap').fullCalendar({
-        // methods here. see API
-      })
-    </script>
+    <div class="container-fluid row">
+    <div class="col-md-8" >
+      <div class="calendar" name="month_view" id="month_view">
+    </div>
+    <div class="col-md-4" >
+      <div class="calendar" name_"day_view" id_"day_view">
+    </div>
+  </div>
+    <script src='js/calendar.js'></script>
   </template>
 </body>
 </html>
