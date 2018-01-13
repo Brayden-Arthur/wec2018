@@ -15,11 +15,8 @@ template {
 nav, template {
   height: 100vh;
 }
-h1 {
-  padding: 20px;
-}
 nav {
-  flex: 0 0 300px;
+  flex: 0 0 200px;
   overflow-y: auto;
   border-right: 1px solid grey;
 }
@@ -108,7 +105,10 @@ header {
 }
 header > img {
   height: 64px;
-  margin: 7px 10px;
+  padding: 7px 10px;
+  background: #fff;
+  border-radius: 3px;
+  margin: 10px;
 }
 header > div {
   height: 42px;
@@ -144,11 +144,6 @@ h2, h3, h4 {
   z-index: 1;
   opacity: 0.5;
 }
-section {
-  border-bottom: 1px solid;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
-}
 h2, #searchInput {
   font-size: 14px;
   cursor: pointer;
@@ -170,8 +165,56 @@ h2:before {
 #about:before {
   background-image: url('images/info.svg');
 }
-#main {
-  background: #fff;
+main {
+  display: none;
+}
+.page {
   flex: 1;
+  padding: 10px;
+  display: block;
+}
+#time {
+  background-image: url('images/2.jpg');
+  background-size: cover;
+}
+#clock {
+  display: inline-block;
+}
+#clock h1, #clock p {
+  color: #fff;
+  padding: 10px;
+  background: #0006;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+#clock h1 {
+  font-size: 50px;
+}
+#clock p {
+  font-size: 20px;
+}
+#timer {
+  float: right;
+  background: #04376985;
+  color: #fff;
+  padding: 10px;
+}
+#timer > * {
+  margin: 5px;
+}
+#timer input {
+  display: block;
+  padding: 10px 15px;
+  color: #000;
   border: none;
+}
+#timer span {
+  display: inline-block;
+  background: rgb(3, 148, 180);
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 2px;
+}
+#timer span:hover {
+  background: rgb(2, 117, 143);
 }

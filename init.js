@@ -61,10 +61,14 @@ var Router = {
   }
 }
 
+Router.navigate()
+
 // adding routes
 Router
 .add(/time/, () => {
+  console.log('loading /time')
   showPage('time')
+  setBackground('time')
 })
 .add(/notes/, () => {
   showPage('notes')
@@ -74,13 +78,14 @@ Router
 })
 .add(/calendar/, () => {
   showPage('calendar')
-})
-.add(() => {
+}).add(() => {
+  console.log('empty path, defaulting to /time')
   Router.navigate('/time')
 })
 .listen()
 
-Router.navigate('/notes')
+console.log('redirecting to /time')
+Router.navigate('/time')
 
 // .add(/products\/(.*)\/edit\/(.*)/, function() {
 //   console.log('products', arguments);
@@ -95,18 +100,32 @@ function showPage(id) {
       console.log('page already loaded, skipping')
       return
     }
-    currentPage.style = 'display: none'
+    currentPage.className = ''
   }
-  const page = document.querySelector('template#' + id)
   // only render it once to preserve state
   if (!renderedPages[id]) {
-    const wrapper = document.createElement('div')
+    const page = document.querySelector(`template#${id}`)
+    const wrapper = document.createElement('main')
     wrapper.appendChild(document.importNode(page.content, true))
+    document.body.removeChild(page)
     renderedPages[id] = wrapper
     document.body.appendChild(renderedPages[id])
   }
   currentPage = renderedPages[id]
-  currentPage.style = 'display: block'
+  currentPage.className = 'page'
+  console.log('showPage sets id', id)
+  currentPage.id = id
+}
+
+function setBackground(id) {
+  // choose a random background image
+  const number = (() => {
+    const max = 2, min = 0
+    return Math.floor(Math.random()*(max - min + 1) + min)
+  })()
+  // `background: linear-gradient(#0001, #0001), url('images/${number}.jpg')`
+  const timePage = document.getElementById(id)
+  timePage.style.backgrondImage = `url('images/${number}.jpg')`
 }
 
 const links = document.querySelectorAll('nav section h2')
