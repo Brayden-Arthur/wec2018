@@ -24,6 +24,10 @@ nav {
     display: inline-block;
     padding: 4px;
 }
+.note span.close{
+  position: relative;
+  right: 22px;
+}
 .note > textarea {
 	width: 300px;
   height: 150px;
@@ -123,7 +127,7 @@ ul li.checked {
   color: #eee;
   text-decoration: line-through;
 }
-span.close{
+li span.close{
   position: absolute;
   right: 0px;
 }
