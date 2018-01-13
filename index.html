@@ -22,10 +22,10 @@
       <div>Innoti.me</div>
     </header>
     <section>
-      <h2>Time</h2>
-      <h2>Notes</h2>
-      <h2>Todo</h2>
-      <h2>Calendar</h2>
+      <h2 class='navEntry'>Time</h2>
+      <h2 class='navEntry'>Notes</h2>
+      <h2 class='navEntry'>Todo</h2>
+      <h2 class='navEntry'>Calendar</h2>
     </section>
   </nav>
   <template id='time'>
@@ -63,8 +63,9 @@
     <script src='js/notes.js'></script>
   </template>
   <template id='todo'>
+    <h1 class"todo_title">Todo List</h1>
     <div class="grid-container">
-      <input id="todo_task" type="text" placeholder="Task Name"></input><button onclick="add_task();">Add Task</button>
+      <input id="todo_task" type="text" placeholder="Task Name"></input><button class="feature_button" onclick="add_task();">Add Task</button>
       <ul id="task_list"></ul>
     </div>
     <script src='js/todo.js'></script>

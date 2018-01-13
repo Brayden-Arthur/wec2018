@@ -1,5 +1,6 @@
 // for the /time route #clock and #timer must exists
 
+// ----------------------------------------------------------------------------
 // clock
 const clockWrap = document.getElementById('clock')
 
@@ -17,25 +18,27 @@ function printClock() {
 printClock()
 setInterval(printClock, 1000)
 
-clockWrap.appendChild(clock)
+const div = document.createElement('div')
+div.appendChild(clock)
+clockWrap.appendChild(div)
 clockWrap.appendChild(today)
 
+// ----------------------------------------------------------------------------
 // timer
 const timerWrap = document.getElementById('timer')
 
-const timer = document.createElement('div')
-timer.id = 'timer'
+const timer = document.createElement('h1')
 
-const pauseButton = document.createElement('div')
+const pauseButton = document.createElement('span')
 pauseButton.innerText = 'Start'
 
-const resetButton = document.createElement('div')
+const resetButton = document.createElement('span')
 resetButton.innerText = 'Reset'
 
 const input = document.createElement('input')
-input.placeholder = '20:00'
+input.placeholder = 'New timer: i.e "20:00"'
 
-const notice = document.createElement('span')
+const notice = document.createElement('p')
 
 // initially load paused
 let paused = true
@@ -48,7 +51,7 @@ const timerTime = localStorage.getItem('timerTime')
 if (timerTime) {
   timer.innerHTML = timerTime
 } else {
-  timer.innerHTML = '00:00'
+  timer.innerHTML = '05:00'
 }
 const inputTime = localStorage.getItem('inputTime')
 if (inputTime) {

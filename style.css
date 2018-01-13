@@ -15,11 +15,8 @@ template {
 nav, template {
   height: 100vh;
 }
-h1 {
-  padding: 20px;
-}
 nav {
-  flex: 0 0 300px;
+  flex: 0 0 200px;
   overflow-y: auto;
   border-right: 1px solid grey;
 }
@@ -30,13 +27,13 @@ nav {
 .note > textarea {
 	width: 300px;
   height: 150px;
-	overflow: hidden;
+	overflow: auto;
   resize: none;
 	font-family: Ariel, monospace;
 	font-size: 15px;
-	line-height: 20px;
-	padding-left: 50px;
-	padding-right: 20px;
+	line-height: 22px;
+	padding-left: 15px;
+	padding-right: 15px;
 	padding-bottom: 5px;
 	background-image:url('images/lines.png'), url('images/paper.png');
 	background-repeat:repeat-y, repeat;
@@ -46,6 +43,7 @@ nav {
 	box-shadow: 0px 2px 5px #000;
 	border-top:1px solid #FFF;
 	border-bottom:1px solid #FFF;
+  word-wrap: break-word;
 }
 .feature_button {
   display: inline-block;
@@ -88,33 +86,46 @@ nav {
   padding: 2px;
 }
 .close:hover {
-    background-color: #f44336;
-    color: white;
+  background-color: #f44336;
+  color: white;
+}
+h1.todo_title{
+  text-align: center;
+}
+.grid-container{
+  margin: 15px;
+  width: 95%;
+}
+#todo_task{
+  display: inline-block;
+  -webkit-border-radius: 7;
+  -moz-border-radius: 7;
+  border-radius: 7px;
+  font-family: Arial;
+  color: #000000;
+  font-size: 12px;
+  background: #ffffff;
+  padding: 5px 10px 5px 10px;
+}
+#task_list{
+ list-style: none;
 }
 ul li {
   cursor: pointer;
   position: relative;
-
-}
-ul li.checked::before {
-    content: '';
-    position: absolute;
-    border-color: #fff;
-    border-style: solid;
-    border-width: 0 2px 2px 0;
-    top: 10px;
-    left: 16px;
-    transform: rotate(45deg);
-    height: 15px;
-    width: 7px;
+  height: 23px;
 }
 ul li:hover {
-    background: #ddd;
+  background: #ddd;
 }
 ul li.checked {
-    background: #888;
-    color: #eee;
-    text-decoration: line-through;
+  background: rgba(0, 163, 19, 0.5);
+  color: #eee;
+  text-decoration: line-through;
+}
+span.close{
+  position: absolute;
+  right: 0px;
 }
 header {
   background-color: #043769;
@@ -125,7 +136,10 @@ header {
 }
 header > img {
   height: 64px;
-  margin: 7px 10px;
+  padding: 7px 10px;
+  background: #fff;
+  border-radius: 3px;
+  margin: 10px;
 }
 header > div {
   height: 42px;
@@ -147,7 +161,7 @@ h2, h3, h4 {
   position: relative;
   margin: 10px 0;
 }
-#search:before, h2:before { /* icons */
+#search:before, .navEntry:before { /* icons */
   position: absolute;
   top: 14px;
   left: 14px;
@@ -161,12 +175,7 @@ h2, h3, h4 {
   z-index: 1;
   opacity: 0.5;
 }
-section {
-  border-bottom: 1px solid;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
-}
-h2, #searchInput {
+.navEntry, #searchInput {
   font-size: 14px;
   cursor: pointer;
   padding: 0 20px 0 40px;
@@ -174,10 +183,10 @@ h2, #searchInput {
   line-height: 40px;
   position: relative;
 }
-h2:hover {
+.navEntry:hover {
   background: #0002;
 }
-h2:before {
+.navEntry:before {
   background-image: url('images/arrow.svg');
   transform: rotate(-90deg);
   background-size: 100% auto;
@@ -187,8 +196,52 @@ h2:before {
 #about:before {
   background-image: url('images/info.svg');
 }
-#main {
-  background: #fff;
+main {
   flex: 1;
+  padding: 10px;
+}
+#time {
+  background-image: url('images/2.jpg');
+  background-size: cover;
+}
+#clock {
+  display: inline-block;
+}
+#clock h1, #clock p {
+  color: #fff;
+  padding: 15px 15px 8px;
+  background: #0006;
+  display: inline-block;
+  margin: 0 0 10px;
+}
+#clock h1 {
+  font-size: 50px;
+}
+#clock p {
+  font-size: 20px;
+}
+#timer {
+  float: right;
+  background: #04376985;
+  color: #fff;
+  padding: 10px;
+}
+#timer > * {
+  margin: 5px;
+}
+#timer input {
+  display: block;
+  padding: 10px 15px;
+  color: #000;
   border: none;
+}
+#timer span {
+  display: inline-block;
+  background: rgb(3, 148, 180);
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 2px;
+}
+#timer span:hover {
+  background: rgb(2, 117, 143);
 }
