@@ -40,18 +40,15 @@
       <input placeholder='Search' id='searchInput'>
     </div>
     <div class="grid-container">
+      <p>All notes are auto saved!</p>
       <div id="note_area" style="display:inline-table;">
-        <div class="note">
-          <textarea name="text1" id="text1"></textarea>
-        </div>
       </div>
       <div>
-        <button class="feature_button" name="add_note" id="add_note" onclick="note_click()">New note</button>
-        <button class="feature_button" name="save_notes" id="save_notes" onclick="local_store()">Save note</button>
+        <button class="feature_button" id="add_note">New note</button>
       </div>
     </div>
-    <script src='js/notes.js'></script>
-    <script src='js/search.js'></script>
+    <script src='js/notes.js' defer></script>
+    <script src='js/search.js' defer></script>
   </template>
   <template id='todo'>
     <h1 class"todo_title">Todo List</h1>
