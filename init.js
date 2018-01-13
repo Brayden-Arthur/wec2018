@@ -100,7 +100,7 @@ function showPage(id) {
       console.log('page already loaded, skipping')
       return
     }
-    currentPage.className = ''
+    currentPage.className = 'collapse'
   }
   // only render it once to preserve state
   if (!renderedPages[id]) {

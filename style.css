@@ -69,8 +69,8 @@ nav {
   padding: 2px;
 }
 .close:hover {
-    background-color: #f44336;
-    color: white;
+  background-color: #f44336;
+  color: white;
 }
 h1.todo_title{
   text-align: center;
@@ -99,13 +99,12 @@ ul li {
   height: 23px;
 }
 ul li:hover {
-    background: #ddd;
+  background: #ddd;
 }
 ul li.checked {
-    background: rgba(0, 163, 19, 0.5);
-    bac
-    color: #eee;
-    text-decoration: line-through;
+  background: rgba(0, 163, 19, 0.5);
+  color: #eee;
+  text-decoration: line-through;
 }
 span.close{
   position: absolute;
@@ -145,7 +144,7 @@ h2, h3, h4 {
   position: relative;
   margin: 10px 0;
 }
-#search:before, h2:before { /* icons */
+#search:before, .navEntry:before { /* icons */
   position: absolute;
   top: 14px;
   left: 14px;
@@ -159,7 +158,7 @@ h2, h3, h4 {
   z-index: 1;
   opacity: 0.5;
 }
-h2, #searchInput {
+.navEntry, #searchInput {
   font-size: 14px;
   cursor: pointer;
   padding: 0 20px 0 40px;
@@ -167,10 +166,10 @@ h2, #searchInput {
   line-height: 40px;
   position: relative;
 }
-h2:hover {
+.navEntry:hover {
   background: #0002;
 }
-h2:before {
+.navEntry:before {
   background-image: url('images/arrow.svg');
   transform: rotate(-90deg);
   background-size: 100% auto;
@@ -181,12 +180,8 @@ h2:before {
   background-image: url('images/info.svg');
 }
 main {
-  display: none;
-}
-.page {
   flex: 1;
   padding: 10px;
-  display: block;
 }
 #time {
   background-image: url('images/2.jpg');
@@ -197,10 +192,10 @@ main {
 }
 #clock h1, #clock p {
   color: #fff;
-  padding: 10px;
+  padding: 15px 15px 8px;
   background: #0006;
   display: inline-block;
-  margin-bottom: 10px;
+  margin: 0 0 10px;
 }
 #clock h1 {
   font-size: 50px;
