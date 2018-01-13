@@ -60,7 +60,7 @@ function draw() {
 
 document.getElementById('add_note').addEventListener('click', event => {
   let tempNotes = localStorage.getItem('notes') || ''
-  tempNotes += ',New Note!'
+  tempNotes += ',Try deleting this note!'
   localStorage.setItem('notes', tempNotes)
   draw()
 })
