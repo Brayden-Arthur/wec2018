@@ -68,12 +68,10 @@
     <br/>
     <div class="container-fluid row">
 
-      <div class="col-md-8" >
+      <div class="col-md-12" >
         <div class="calendar" name="month_view" id="month_view"></div>
       </div>
-      <div class="col-md-4" >
-        <div class="calendar" name="day_view" id="day_view"></div>
-      </div>
+
 
 
       <div class="modal fade" id="event_creator" tabindex="-1">
@@ -98,7 +96,29 @@
           </div>
         </div>
       </div>
-
+      <div class="modal fade" id="event_editor" tabindex="-1">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <input type="text" class="form-control" id="edit_title" placeholder="Event Title"></input>
+            </div>
+            <div class="modal-body">
+              <label for="start_time">Start time:</label>
+              <input type="datetime-local" id="edit_start_time"></input>
+              <br/>
+              <label for="end_time">End time:</label>
+              <input type="datetime-local" id="edit_end_time"></input>
+            </form>
+            </div>
+            <span id="edit_id" value="" style="visibility:hidden;"></span>
+            <div class="modal-footer">
+              <button type="button" class="pull-left cancel_button" data-dismiss="modal">Cancel</button>
+              <button type="button" class="pull-left cancel_button" style="padding:5px;" onclick="delete_event();" data-dismiss="modal">Delete</button>
+              <button type="button" class="feature_button" onclick="completeEdit();" data-dismiss="modal">Edit Event</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
     </div>
     <script src='js/calendar.js'></script>
