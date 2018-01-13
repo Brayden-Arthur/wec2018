@@ -40,32 +40,21 @@ input.placeholder = 'New timer: i.e "20:00"'
 
 const notice = document.createElement('p')
 
-// initially load paused
-let paused = true
 // holds the timeout for the next tick
 let next
 // the audio file to play when the timer completes
 const audio = new Audio('TimerDoneBell.mp3')
 
-const timerTime = localStorage.getItem('timerTime')
-if (timerTime) {
-  timer.innerHTML = timerTime
-} else {
-  timer.innerHTML = '05:00'
-}
-const inputTime = localStorage.getItem('inputTime')
-if (inputTime) {
-  input.value = inputTime
+timer.innerHTML = localStorage.getItem('timerTime') || '05:00'
+const savedTime = localStorage.getItem('savedTime')
+if (savedTime) {
+  input.value = savedTime
 }
 // else use placeholder
 
-function pause(bool) {
-  console.log('pause', bool)
-  if (paused === bool) {
-    return
-  }
-  paused = bool
-  const text = bool ? 'Start' : 'Stop'
+function pause(boolAsString) {
+  localStorage.setItem('paused', boolAsString)
+  const text = boolAsString === 'true' ? 'Start' : 'Stop'
   pauseButton.innerText = text
   tick()
 }
@@ -76,25 +65,29 @@ input.addEventListener('keyup', event => {
     notice.innerText= ''
     localStorage.setItem('savedTime', input.value)
     reset()
+  } else if (!input.value) {
+    notice.innerText= ''
   } else {
     notice.innerText = 'Please use (M)M:SS format'
   }
 })
 
 pauseButton.addEventListener('click', event => {
-  pause(!paused)
+  // flip value
+  pause(localStorage.getItem('paused') === 'true' ? 'false' : 'true')
 })
 
 function reset() {
   // clearTimeout(next)
   // tick()
-  timer.innerHTML = localStorage.getItem('savedTime')
+  timer.innerHTML = localStorage.getItem('savedTime') || '05:00'
   notice.innerText = ''
 }
 resetButton.addEventListener('click', reset)
 
 function tick() {
-  if (paused) {
+  if (localStorage.getItem('paused') === 'true') {
+    console.log('skipping!!')
     return
   }
   const now = timer.innerHTML
@@ -120,9 +113,11 @@ function tick() {
   }
   const newTime = `${minutes}:${seconds}`
   timer.innerHTML = newTime
-  localStorage.setItem('time', newTime)
-  next = setTimeout(tick, 1000)
+  localStorage.setItem('timerTime', newTime)
+  setTimeout(tick, 1000)
 }
+
+pause(localStorage.getItem('paused'))
 
 const elements = [timer, pauseButton, resetButton, input, notice]
 for (elem of elements) {
