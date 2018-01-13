@@ -16,7 +16,6 @@ function note_click() {
 function local_store() {
   var num_notes = document.querySelectorAll('.note').length;
   for(i = 1; i <= num_notes; i++){
-    console.log(i)
     var note = document.getElementById("text" + i).value;
     localStorage.setItem("note" + i, note);
     localStorage.setItem("num_notes",num_notes)
@@ -25,7 +24,6 @@ function local_store() {
 
 function setup() {
   var num_notes = localStorage.getItem("num_notes");
-  console.log(num_notes)
   if(num_notes){
     if(num_notes == 1){
       document.getElementById("text1").value = localStorage.getItem("note1")

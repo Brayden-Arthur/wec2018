@@ -27,13 +27,13 @@ nav {
 .note > textarea {
 	width: 300px;
   height: 150px;
-	overflow: hidden;
+	overflow: auto;
   resize: none;
 	font-family: Ariel, monospace;
 	font-size: 15px;
-	line-height: 20px;
-	padding-left: 50px;
-	padding-right: 20px;
+	line-height: 22px;
+	padding-left: 15px;
+	padding-right: 15px;
 	padding-bottom: 5px;
 	background-image:url('images/lines.png'), url('images/paper.png');
 	background-repeat:repeat-y, repeat;
@@ -43,6 +43,7 @@ nav {
 	box-shadow: 0px 2px 5px #000;
 	border-top:1px solid #FFF;
 	border-bottom:1px solid #FFF;
+  word-wrap: break-word;
 }
 .feature_button {
   display: inline-block;
@@ -71,30 +72,44 @@ nav {
     background-color: #f44336;
     color: white;
 }
+h1.todo_title{
+  text-align: center;
+}
+.grid-container{
+  margin: 15px;
+  width: 95%;
+}
+#todo_task{
+  display: inline-block;
+  -webkit-border-radius: 7;
+  -moz-border-radius: 7;
+  border-radius: 7px;
+  font-family: Arial;
+  color: #000000;
+  font-size: 12px;
+  background: #ffffff;
+  padding: 5px 10px 5px 10px;
+}
+#task_list{
+ list-style: none;
+}
 ul li {
   cursor: pointer;
   position: relative;
-  
-}
-ul li.checked::before {
-    content: '';
-    position: absolute;
-    border-color: #fff;
-    border-style: solid;
-    border-width: 0 2px 2px 0;
-    top: 10px;
-    left: 16px;
-    transform: rotate(45deg);
-    height: 15px;
-    width: 7px;
+  height: 23px;
 }
 ul li:hover {
     background: #ddd;
 }
 ul li.checked {
-    background: #888;
+    background: rgba(0, 163, 19, 0.5);
+    bac
     color: #eee;
     text-decoration: line-through;
+}
+span.close{
+  position: absolute;
+  right: 0px;
 }
 header {
   background-color: #043769;
