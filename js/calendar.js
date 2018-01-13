@@ -53,21 +53,30 @@ function editEvent(calEvent){
 
 function saveEvents(){
   event_list = $("#month_view").fullCalendar('clientEvents')
-  console.log(event_list)
   for(i=0; i < event_list.length; i++){
     storage_object = {
       "title": event_list[i]['title'],
       "start": event_list[i]['start'],
       "end": event_list[i]['end']
     }
-    console.log(storage_object);
     storage_list[i] = storage_object
   }
 
   localStorage.setItem("event_list",JSON.stringify(storage_list))
 }
 
-function setup(){
+function calendar_setup(){
+  storage_string = localStorage.getItem("event_list")
+  storage_list = JSON.parse(storage_string)
+  for(i = 0; i < storage_list.length; i++){
+    var event_object = {
+      title: storage_list[i].title,
+      start: storage_list[i].start,
+      end: storage_list[i].end
+    }
+    $('#day_view').fullCalendar({'renderEvent', event_object, true})
+    $('#month_view').fullCalendar({'renderEvent', event_object, true})
+  }
 
-  
+
 }
